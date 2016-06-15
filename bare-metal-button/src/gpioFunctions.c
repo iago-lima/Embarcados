@@ -10,7 +10,6 @@
 #include "gpioFunctions.h"
 #include "gpioLED.h"
 #include "gpioClk.h"
-#include "gpioPinSelect.h"
 
 void ledInit(int nGpio, int GPIOModule, int direction){
 
