@@ -10476,7 +10476,7 @@ DMTIMER_WRITE_POST_TLDR	inc/dmtimer.h	194;"	d
 DMTIMER_WRITE_POST_TMAR	inc/dmtimer.h	188;"	d
 DMTIMER_WRITE_POST_TTGR	inc/dmtimer.h	191;"	d
 Debug_FLAG	makefile	/^Debug_FLAG=-g$/;"	m
-Delay	src/gpioRobert.c	/^static void Delay(volatile unsigned int count){$/;"	f	file:
+Delay	src/gpioFunctions.c	/^void Delay(volatile unsigned int count){$/;"	f
 Divider	inc/tsc_adc.h	/^                   signed int Divider;$/;"	m	struct:__anon17
 Dn	inc/tsc_adc.h	/^                   signed int Dn;$/;"	m	struct:__anon17
 ECAP	inc/ehrpwm.h	159;"	d
@@ -14224,6 +14224,7 @@ En	inc/tsc_adc.h	/^                   signed int En;$/;"	m	struct:__anon17
 FAIL	inc/armv7a/am335x/clock.h	/^    FAIL     = 0,$/;"	e	enum:__anon1
 FALSE	inc/hw/hw_types.h	85;"	d
 Fn	inc/tsc_adc.h	/^                   signed int Fn;$/;"	m	struct:__anon17
+GET32	src/start.s	/^GET32:$/;"	l
 GPIO0	inc/gpioLED.h	/^enum pin{GPIO0, GPIO1, GPIO2, GPIO3, GPIO4, GPIO5, GPIO6,$/;"	e	enum:pin
 GPIO0_ModuleClkConfig	src/gpioClk.c	/^void GPIO0_ModuleClkConfig(void){$/;"	f
 GPIO0_REG	inc/hw/hw_tps65910.h	137;"	d
@@ -14270,7 +14271,6 @@ GPIOModuleEnable	src/gpioLED.c	/^void GPIOModuleEnable(unsigned int baseAdd){$/;
 GPIOModuleReset	src/gpioLED.c	/^void GPIOModuleReset(unsigned int baseAdd){$/;"	f
 GPIOPINSELECT_H_	inc/gpioPinSelect.h	2;"	d
 GPIOPinMuxSetup	src/gpioLED.c	/^void GPIOPinMuxSetup(unsigned int offsetAddr, unsigned int padConfValue){$/;"	f
-GPIOPinMuxSetup0	src/gpioLED.c	/^void GPIOPinMuxSetup0(unsigned int offsetAddr, unsigned int padConfValue){$/;"	f
 GPIOPinWrite	src/gpioLED.c	/^void GPIOPinWrite(unsigned int baseAdd,$/;"	f
 GPIO_0_0	inc/armv7a/am335x/pin_mux.h	60;"	d
 GPIO_0_1	inc/armv7a/am335x/pin_mux.h	61;"	d
@@ -22156,7 +22156,7 @@ MPUPLL_M_600_MHZ	inc/armv7a/am335x/device.h	119;"	d
 MPUPLL_M_720_MHZ	inc/armv7a/am335x/device.h	120;"	d
 MPUPLL_M_800_MHZ	inc/armv7a/am335x/device.h	121;"	d
 MPUPLL_N	inc/armv7a/am335x/device.h	112;"	d
-MSEG	src/gpioRobert.c	11;"	d	file:
+MSEG	inc/gpioLED.h	50;"	d
 MUSB_RXCSR_AUTOCLEAR	inc/hw/hw_usb.h	2083;"	d
 MUSB_RXCSR_AUTOCLEAR	inc/hw/hw_usb.h	2161;"	d
 MUSB_RXCSR_AUTOCLEAR	inc/hw/hw_usb.h	2239;"	d
@@ -23448,6 +23448,7 @@ PRU_INTC_SITR2_REG	inc/pruss.h	156;"	d
 PRU_INTC_SRSR1_REG	inc/pruss.h	119;"	d
 PRU_INTC_SRSR2_REG	inc/pruss.h	120;"	d
 PUADEN_REG	inc/hw/hw_tps65910.h	99;"	d
+PUT32	src/start.s	/^PUT32:$/;"	l
 PWMSS_CLOCK_CONFIG	inc/hw/hw_pwmss.h	45;"	d
 PWMSS_CLOCK_STATUS	inc/hw/hw_pwmss.h	47;"	d
 PWMSS_ECAP_CLK_EN_ACK	inc/hw/hw_pwmss.h	57;"	d
@@ -28484,7 +28485,9 @@ __USB_H__	inc/usb.h	42;"	d
 __WDT_H__	inc/watchdog.h	44;"	d
 __channel_to_host_map	inc/pruss.h	/^ typedef struct __channel_to_host_map$/;"	s
 __pruss_intc_initdata	inc/pruss.h	/^ typedef struct __pruss_intc_initdata $/;"	s
+__start_H	inc/start.h	2;"	d
 __sysevt_to_channel_map	inc/pruss.h	/^ typedef struct __sysevt_to_channel_map$/;"	s
+_start	src/start.s	/^_start:$/;"	l
 _tUSBPerfInfo_	inc/usblib.h	/^typedef struct _tUSBPerfInfo_$/;"	s
 aCnt	inc/edma.h	/^        unsigned short aCnt;$/;"	m	struct:EDMA3CCPaRAMEntry
 accsCtrl	inc/armv7a/mmu.h	/^    unsigned int accsCtrl; \/* Access Permissions for the page *\/$/;"	m	struct:region
@@ -28672,6 +28675,7 @@ gBuffAdd	inc/cppi41dma.h	/^    unsigned int gBuffAdd;$/;"	m	struct:hostPacketDes
 gBuffLength	inc/cppi41dma.h	/^    unsigned int gBuffLength;$/;"	m	struct:hostPacketDesc
 gblctl	inc/mcasp.h	/^    unsigned int gblctl;$/;"	m	struct:mcaspContext
 genericClock	inc/armv7a/am335x/clock.h	/^struct genericClock{$/;"	s
+getValue	src/gpioFunctions.c	/^int getValue(unsigned int nGpio, unsigned int nModule){$/;"	f
 gmiisel	inc/armv7a/am335x/beaglebone.h	/^    unsigned int gmiisel;$/;"	m	struct:ctrlRegContext
 gmiisel	inc/armv7a/am335x/evmAM335x.h	/^    unsigned int gmiisel;$/;"	m	struct:ctrlRegContext
 gmiisel	inc/armv7a/am335x/evmskAM335x.h	/^    unsigned int gmiisel;$/;"	m	struct:ctrlRegContext
@@ -28734,7 +28738,7 @@ lcddmaFb0Base	inc/raster.h	/^    unsigned int lcddmaFb0Base;$/;"	m	struct:raster
 lcddmaFb0Ceiling	inc/raster.h	/^    unsigned int lcddmaFb0Ceiling;$/;"	m	struct:rasterContext
 lcddmaFb1Base	inc/raster.h	/^    unsigned int lcddmaFb1Base;$/;"	m	struct:rasterContext
 lcddmaFb1Ceiling	inc/raster.h	/^    unsigned int lcddmaFb1Ceiling;$/;"	m	struct:rasterContext
-ledInit	src/gpioFunctions.c	/^void ledInit(int nGpio, int GPIOModule){$/;"	f
+ledInit	src/gpioFunctions.c	/^void ledInit(int nGpio, int GPIOModule, int direction){$/;"	f
 ledToggle	src/gpioLED.c	/^void ledToggle(int nGpio, int GPIOModule){$/;"	f
 linkAddr	inc/edma.h	/^        unsigned short linkAddr;$/;"	m	struct:EDMA3CCPaRAMEntry
 lowdivider	inc/hsi2c.h	/^    unsigned int lowdivider;$/;"	m	struct:i2cContext

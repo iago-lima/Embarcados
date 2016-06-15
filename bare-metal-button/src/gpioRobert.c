@@ -8,41 +8,28 @@
 ********************************************************/
 #include "gpioFunctions.h"
 #include "gpioLED.h"
-#include "start.h"
-#define MSEG                           (0x3FFFFFF)
-
-static void Delay(volatile unsigned int count);
-int getPin(int nGpio, int nModule);
 
 int main(){
 
-	ledInit(GPIO23, MODULE1);
+	//INICIALIZANDO O LED DA PLACA, GPIO1_23
+	ledInit(GPIO23, MODULE1, DIR_OUTPUT);
+	//INICIALIZANDO O BOTÃO NO GPIO1_14, PASSANDO INPUT
+	ledInit(GPIO14, MODULE1, DIR_INPUT);
 
 	while(TRUE){
-        
-		if(getPin(GPIO12, MODULE1)){
-			ledToggle(GPIO23, MODULE1);
+        switch((getValue(GPIO14, MODULE1))){
+			case PIN_HIGH:		
+	        GPIOPinWrite(GPIO_INSTANCE_ADDRESS(MODULE1),
+		            GPIO_INSTANCE_PIN_NUMBER(GPIO23),
+			        PIN_HIGH);		
+			case PIN_LOW:
+			GPIOPinWrite(GPIO_INSTANCE_ADDRESS(MODULE1),
+		            GPIO_INSTANCE_PIN_NUMBER(GPIO23),
+			        PIN_LOW);		
 		}
-
+		
         Delay(MSEG);
-
     }
 	
-
 	return(0);
-
-}
-
-static void Delay(volatile unsigned int count){
-    while(count--);
-      asm("   nop");
-}
-
-
-int getPin(int nGpio, int nModule){
-	int *end_teste = (GPIO_INSTANCE_ADDRESS(nModule) + GPIO_DATAIN);
-	int teste = *end_teste;
-	
-	if(teste & (1<<nGpio)) return PIN_HIGH;
-	else return PIN_LOW;
 }

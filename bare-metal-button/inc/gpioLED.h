@@ -47,6 +47,8 @@
 
 #define TOGGLE                          (0x01u)
 
+#define MSEG                           (0x3FFFFFF)
+
 enum moduleClk{MODULE0, MODULE1, MODULE2, MODULE3}moduleClk;
 
 enum pin{GPIO0, GPIO1, GPIO2, GPIO3, GPIO4, GPIO5, GPIO6,

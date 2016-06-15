@@ -12,12 +12,12 @@
 #include "gpioClk.h"
 #include "gpioPinSelect.h"
 
-void ledInit(int nGpio, int GPIOModule){
+void ledInit(int nGpio, int GPIOModule, int direction){
 
     gpioModuleClk(GPIOModule);
 	
 	//CONFIGURAR O PINO gpioPinSelect.c
-/*	switch(GPIOModule){
+	switch(GPIOModule){
 		case MODULE0:
 			modulo0(nGpio);			
 			break;
@@ -31,23 +31,14 @@ void ledInit(int nGpio, int GPIOModule){
 			modulo3(nGpio);
 			break;
 	}
-  */ 
-    GPIOPinMuxSetup0(CONTROL_CONF_GPMC_AD(12), CONTROL_CONF_MUXMODE(7));
-    GPIOPinMuxSetup(CONTROL_CONF_GPMC_A(7), CONTROL_CONF_MUXMODE(7));	
-
-	
- 
+	 
     GPIOModuleEnable(GPIO_INSTANCE_ADDRESS(GPIOModule));
 
     GPIOModuleReset(GPIO_INSTANCE_ADDRESS(GPIOModule));
 
-    GPIODirModeSet(GPIO_INSTANCE_ADDRESS(1),
-               GPIO_INSTANCE_PIN_NUMBER(23),
-               DIR_OUTPUT);    
-
-    GPIODirModeSet(GPIO_INSTANCE_ADDRESS(1),
-               GPIO_INSTANCE_PIN_NUMBER(12),
-               DIR_INPUT);
+    GPIODirModeSet(GPIO_INSTANCE_ADDRESS(GPIOModule),
+               GPIO_INSTANCE_PIN_NUMBER(nGpio),
+               direction);    
 
 }
 
@@ -133,7 +124,6 @@ void modulo1(int nGpio){
 		break;
 
 		case GPIO12 ... GPIO15:
-        GPIOPinMuxSetup0(CONTROL_CONF_GPMC_AD(nGpio), CONTROL_CONF_MUXMODE(7));
 	    GPIOPinMuxSetup(CONTROL_CONF_GPMC_A(7), CONTROL_CONF_MUXMODE(7));	
 		break;
 
@@ -211,4 +201,18 @@ void modulo3(int nGpio){
 		break;
 	}
 
+}
+
+void Delay(volatile unsigned int count){
+    while(count--);
+      asm("   nop");
+}
+
+
+int getValue(unsigned int nGpio, unsigned int nModule){
+	int* end_teste = (int*)(GPIO_INSTANCE_ADDRESS(nModule) + GPIO_DATAIN);
+	int teste = *end_teste;
+	
+	if(teste & (1<<nGpio)) return PIN_HIGH;
+	else return PIN_LOW;
 }

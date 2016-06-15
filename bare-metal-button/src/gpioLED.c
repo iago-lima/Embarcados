@@ -33,17 +33,12 @@ int flagToggle=0x0;
 * The 'offsetAddr' and 'padConfValue' can be obtained from macros defined
 * in the file 'include/armv7a/am335x/pin_mux.h'.\n
 *END*-----------------------------------------------------------*/
-void GPIOPinMuxSetup(unsigned int offsetAddr, unsigned int padConfValue){
-    HWREG(SOC_CONTROL_REGS + offsetAddr) = (padConfValue);
-	
-}
 
-void GPIOPinMuxSetup0(unsigned int offsetAddr, unsigned int padConfValue){
-	HWREG(SOC_CONTROL_REGS + offsetAddr) = (padConfValue);
-    HWREG(SOC_CONTROL_REGS + offsetAddr) |= CONTROL_CONF_GPMC_AD12_CONF_GPMC_AD12_RXACTIVE;
-    HWREG(SOC_CONTROL_REGS + offsetAddr) &= ~(CONTROL_CONF_GPMC_AD12_CONF_GPMC_AD12_PUTYPESEL);
-    HWREG(SOC_CONTROL_REGS + offsetAddr) &= ~(CONTROL_CONF_GPMC_AD12_CONF_GPMC_AD12_PUDEN);
-	
+void GPIOPinMuxSetup(unsigned int offsetAddr, unsigned int padConfValue){
+		HWREG(SOC_CONTROL_REGS + offsetAddr) = (padConfValue);
+	    HWREG(SOC_CONTROL_REGS + offsetAddr) |= CONTROL_CONF_GPMC_AD12_CONF_GPMC_AD12_RXACTIVE;
+	    HWREG(SOC_CONTROL_REGS + offsetAddr) &= ~(CONTROL_CONF_GPMC_AD12_CONF_GPMC_AD12_PUTYPESEL);
+	    HWREG(SOC_CONTROL_REGS + offsetAddr) &= ~(CONTROL_CONF_GPMC_AD12_CONF_GPMC_AD12_PUDEN);
 }
 
 /*FUNCTION*-------------------------------------------------------
