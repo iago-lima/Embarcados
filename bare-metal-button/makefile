@@ -1,7 +1,7 @@
 
 # Toolchain/library path. LIB_PATH is an exported environmental variable which
 # shall point to the installation of toolchain
-#
+# 
 LIB_GCC=${LIB_PATH}/usr/lib/gcc/arm-none-eabi/4.9.3/
 LIB_C=${LIB_PATH}/usr/lib/arm-none-eabi/lib/
 SYSCONFIG_BIN=lib
