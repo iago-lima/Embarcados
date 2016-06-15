@@ -35,7 +35,7 @@ static void Delay(unsigned int count);
 * Comments      :
 *END*-----------------------------------------------------------*/
 int main() {
-    int pin = 12;
+    int pin = 23;
     /* configure gpio pin for the blue LED control. */
     ledInit(pin);
 

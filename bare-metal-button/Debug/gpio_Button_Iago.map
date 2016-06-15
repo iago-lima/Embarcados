@@ -318,33 +318,33 @@ LOAD lib/Debug/libsystem_config.a
                 0x00000000880019b4                _stack = __StackTop
 OUTPUT(Debug/gpio_Button_Iago.out elf32-littlearm)
 
-.debug_info     0x0000000000000000     0x1025
+.debug_info     0x0000000000000000     0x104d
  .debug_info    0x0000000000000000      0x179 Debug/gpioClk.o
- .debug_info    0x0000000000000179      0x237 Debug/gpioFunctions.o
- .debug_info    0x00000000000003b0      0x281 Debug/gpioLED.o
- .debug_info    0x0000000000000631      0x159 Debug/gpio_Button_Iago.o
- .debug_info    0x000000000000078a       0x9f lib/Debug/libsystem_config.a(init.o)
- .debug_info    0x0000000000000829       0xd2 lib/Debug/libsystem_config.a(startup.o)
- .debug_info    0x00000000000008fb       0x9f lib/Debug/libsystem_config.a(cp15.o)
- .debug_info    0x000000000000099a       0xb2 lib/Debug/libsystem_config.a(exceptionhandler.o)
- .debug_info    0x0000000000000a4c      0x3cf lib/Debug/libsystem_config.a(interrupt.o)
- .debug_info    0x0000000000000e1b       0xae /usr/lib/gcc/arm-none-eabi/4.9.3//libgcc.a(_udivsi3.o)
- .debug_info    0x0000000000000ec9       0xae /usr/lib/gcc/arm-none-eabi/4.9.3//libgcc.a(_divsi3.o)
- .debug_info    0x0000000000000f77       0xae /usr/lib/gcc/arm-none-eabi/4.9.3//libgcc.a(_dvmd_tls.o)
+ .debug_info    0x0000000000000179      0x25f Debug/gpioFunctions.o
+ .debug_info    0x00000000000003d8      0x281 Debug/gpioLED.o
+ .debug_info    0x0000000000000659      0x159 Debug/gpio_Button_Iago.o
+ .debug_info    0x00000000000007b2       0x9f lib/Debug/libsystem_config.a(init.o)
+ .debug_info    0x0000000000000851       0xd2 lib/Debug/libsystem_config.a(startup.o)
+ .debug_info    0x0000000000000923       0x9f lib/Debug/libsystem_config.a(cp15.o)
+ .debug_info    0x00000000000009c2       0xb2 lib/Debug/libsystem_config.a(exceptionhandler.o)
+ .debug_info    0x0000000000000a74      0x3cf lib/Debug/libsystem_config.a(interrupt.o)
+ .debug_info    0x0000000000000e43       0xae /usr/lib/gcc/arm-none-eabi/4.9.3//libgcc.a(_udivsi3.o)
+ .debug_info    0x0000000000000ef1       0xae /usr/lib/gcc/arm-none-eabi/4.9.3//libgcc.a(_divsi3.o)
+ .debug_info    0x0000000000000f9f       0xae /usr/lib/gcc/arm-none-eabi/4.9.3//libgcc.a(_dvmd_tls.o)
 
-.debug_abbrev   0x0000000000000000      0x5cf
+.debug_abbrev   0x0000000000000000      0x601
  .debug_abbrev  0x0000000000000000       0xb4 Debug/gpioClk.o
- .debug_abbrev  0x00000000000000b4      0x100 Debug/gpioFunctions.o
- .debug_abbrev  0x00000000000001b4       0xb6 Debug/gpioLED.o
- .debug_abbrev  0x000000000000026a       0x8b Debug/gpio_Button_Iago.o
- .debug_abbrev  0x00000000000002f5       0x14 lib/Debug/libsystem_config.a(init.o)
- .debug_abbrev  0x0000000000000309       0xa2 lib/Debug/libsystem_config.a(startup.o)
- .debug_abbrev  0x00000000000003ab       0x14 lib/Debug/libsystem_config.a(cp15.o)
- .debug_abbrev  0x00000000000003bf       0x14 lib/Debug/libsystem_config.a(exceptionhandler.o)
- .debug_abbrev  0x00000000000003d3      0x1c0 lib/Debug/libsystem_config.a(interrupt.o)
- .debug_abbrev  0x0000000000000593       0x14 /usr/lib/gcc/arm-none-eabi/4.9.3//libgcc.a(_udivsi3.o)
- .debug_abbrev  0x00000000000005a7       0x14 /usr/lib/gcc/arm-none-eabi/4.9.3//libgcc.a(_divsi3.o)
- .debug_abbrev  0x00000000000005bb       0x14 /usr/lib/gcc/arm-none-eabi/4.9.3//libgcc.a(_dvmd_tls.o)
+ .debug_abbrev  0x00000000000000b4      0x132 Debug/gpioFunctions.o
+ .debug_abbrev  0x00000000000001e6       0xb6 Debug/gpioLED.o
+ .debug_abbrev  0x000000000000029c       0x8b Debug/gpio_Button_Iago.o
+ .debug_abbrev  0x0000000000000327       0x14 lib/Debug/libsystem_config.a(init.o)
+ .debug_abbrev  0x000000000000033b       0xa2 lib/Debug/libsystem_config.a(startup.o)
+ .debug_abbrev  0x00000000000003dd       0x14 lib/Debug/libsystem_config.a(cp15.o)
+ .debug_abbrev  0x00000000000003f1       0x14 lib/Debug/libsystem_config.a(exceptionhandler.o)
+ .debug_abbrev  0x0000000000000405      0x1c0 lib/Debug/libsystem_config.a(interrupt.o)
+ .debug_abbrev  0x00000000000005c5       0x14 /usr/lib/gcc/arm-none-eabi/4.9.3//libgcc.a(_udivsi3.o)
+ .debug_abbrev  0x00000000000005d9       0x14 /usr/lib/gcc/arm-none-eabi/4.9.3//libgcc.a(_divsi3.o)
+ .debug_abbrev  0x00000000000005ed       0x14 /usr/lib/gcc/arm-none-eabi/4.9.3//libgcc.a(_dvmd_tls.o)
 
 .debug_aranges  0x0000000000000000      0x2c0
  .debug_aranges
@@ -394,17 +394,17 @@ OUTPUT(Debug/gpio_Button_Iago.out elf32-littlearm)
  .debug_line    0x00000000000009ad       0x84 /usr/lib/gcc/arm-none-eabi/4.9.3//libgcc.a(_divsi3.o)
  .debug_line    0x0000000000000a31       0x5b /usr/lib/gcc/arm-none-eabi/4.9.3//libgcc.a(_dvmd_tls.o)
 
-.debug_str      0x0000000000000000      0x80c
+.debug_str      0x0000000000000000      0x821
  .debug_str     0x0000000000000000      0x28d Debug/gpioClk.o
- .debug_str     0x000000000000028d       0x66 Debug/gpioFunctions.o
-                                        0x2c7 (size before relaxing)
- .debug_str     0x00000000000002f3       0xb0 Debug/gpioLED.o
+ .debug_str     0x000000000000028d       0x7b Debug/gpioFunctions.o
+                                        0x2dc (size before relaxing)
+ .debug_str     0x0000000000000308       0xb0 Debug/gpioLED.o
                                         0x31c (size before relaxing)
- .debug_str     0x00000000000003a3       0x1c Debug/gpio_Button_Iago.o
+ .debug_str     0x00000000000003b8       0x1c Debug/gpio_Button_Iago.o
                                         0x277 (size before relaxing)
- .debug_str     0x00000000000003bf      0x192 lib/Debug/libsystem_config.a(startup.o)
+ .debug_str     0x00000000000003d4      0x192 lib/Debug/libsystem_config.a(startup.o)
                                         0x1bc (size before relaxing)
- .debug_str     0x0000000000000551      0x2bb lib/Debug/libsystem_config.a(interrupt.o)
+ .debug_str     0x0000000000000566      0x2bb lib/Debug/libsystem_config.a(interrupt.o)
                                         0x407 (size before relaxing)
 
 .comment        0x0000000000000000       0xa6

@@ -360,13 +360,13 @@ OUTPUT(Debug/gpioLedBlink.out elf32-littlearm)
  .debug_line    0x0000000000000802       0x84 /usr/lib/gcc/arm-none-eabi/4.9.3//libgcc.a(_divsi3.o)
  .debug_line    0x0000000000000886       0x5b /usr/lib/gcc/arm-none-eabi/4.9.3//libgcc.a(_dvmd_tls.o)
 
-.debug_str      0x0000000000000000      0x745
- .debug_str     0x0000000000000000      0x2d4 Debug/gpioLED.o
- .debug_str     0x00000000000002d4       0x24 Debug/gpioLEDBlink.o
-                                        0x14e (size before relaxing)
- .debug_str     0x00000000000002f8      0x192 lib/Debug/libsystem_config.a(startup.o)
+.debug_str      0x0000000000000000      0x750
+ .debug_str     0x0000000000000000      0x2df Debug/gpioLED.o
+ .debug_str     0x00000000000002df       0x24 Debug/gpioLEDBlink.o
+                                        0x159 (size before relaxing)
+ .debug_str     0x0000000000000303      0x192 lib/Debug/libsystem_config.a(startup.o)
                                         0x1bc (size before relaxing)
- .debug_str     0x000000000000048a      0x2bb lib/Debug/libsystem_config.a(interrupt.o)
+ .debug_str     0x0000000000000495      0x2bb lib/Debug/libsystem_config.a(interrupt.o)
                                         0x407 (size before relaxing)
 
 .comment        0x0000000000000000       0xa6

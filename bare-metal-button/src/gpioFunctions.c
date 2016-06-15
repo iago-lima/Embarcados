@@ -9,7 +9,7 @@
 
 #include "gpioFunctions.h"
 #include "gpioLED.h"
-#include "gpioClk.h"
+#include "gpioClk.h"	
 
 void ledInit(int nGpio, int GPIOModule, int direction){
 
