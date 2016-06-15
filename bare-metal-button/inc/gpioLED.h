@@ -49,25 +49,23 @@
 
 #define MSEG                           (0x3FFFFFF)
 
-enum moduleClk{MODULE0, MODULE1, MODULE2, MODULE3}moduleClk;
+enum moduleClk{MODULE1}moduleClk;
 
-enum pin{GPIO0, GPIO1, GPIO2, GPIO3, GPIO4, GPIO5, GPIO6,
-		 GPIO7, GPIO8, GPIO9, GPIO10, GPIO11, GPIO12, GPIO13,
-		 GPIO14, GPIO15, GPIO16, GPIO17, GPIO18, GPIO19, GPIO20,
-		 GPIO21, GPIO22, GPIO23, GPIO24, GPIO25, GPIO26, GPIO27,
-		 GPIO28, GPIO29, GPIO30, GPIO31}pin;
+enum pin{
+		GPIO1_0, GPIO1_1, GPIO1_2, GPIO1_3, GPIO1_4, GPIO1_5, GPIO1_6, GPIO1_7, GPIO1_8, 
+		GPIO1_9, GPIO1_10, GPIO1_11, GPIO1_12, GPIO1_13, GPIO1_14, GPIO1_15, GPIO1_16, 
+		GPIO1_17, GPIO1_18, GPIO1_19, GPIO1_20, GPIO1_21, GPIO1_22, GPIO1_23, GPIO1_24, 
+		GPIO1_25, GPIO1_26, GPIO1_27, GPIO1_28, GPIO1_29, GPIO1_30, GPIO1_31
+		}pin;
 
 void ledToggle(int nGpio, int GPIOModule);
 void GPIOPinMuxSetup(unsigned int offsetAddr, unsigned int padConfValue);
 void GPIOPinMuxSetup0(unsigned int offsetAddr, unsigned int padConfValue);
 void GPIOModuleEnable(unsigned int baseAdd);
 void GPIOModuleReset(unsigned int baseAdd);
-void GPIODirModeSet(unsigned int baseAdd,
-                            unsigned int pinNumber,
-                            unsigned int pinDirection);
-void GPIOPinWrite(unsigned int baseAdd,
-                            unsigned int pinNumber,
-                            unsigned int pinValue);
+void GPIODirModeSet(unsigned int baseAdd, unsigned int pinNumber, unsigned int pinDirection
+					);
+void GPIOPinWrite(unsigned int baseAdd, unsigned int pinNumber, unsigned int pinValue);
 void ledToggle();
 
 

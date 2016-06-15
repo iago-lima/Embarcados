@@ -1,9 +1,9 @@
 /*******************************************************
 *                                                      *
-*   Criado em: Seg 13/Jun/2016,  08:03 hs              *
+*   Criado em: Sáb 11/Jun/2016,  13:48 hs              *
 *   Instituicao: Universidade Federal do Ceará         *
-*   Autor: Robert Cabral                               *
-*   email: robertcabral@alu.ufc.br                     *
+*   Autor: Iago O. Lima                                *
+*   email: iago.oliveira@alu.ufc.br                    *
 *                                                      *
 ********************************************************/
 
@@ -11,25 +11,6 @@
 #include "gpioLED.h"
 #include "gpioClk.h"
 
-void GPIO3_ModuleClkConfig(void){
-
-    HWREG(SOC_CM_PER_REGS + CM_PER_GPIO3_CLKCTRL) |=
-          CM_PER_GPIO3_CLKCTRL_MODULEMODE_ENABLE;
-
-    HWREG(SOC_CM_PER_REGS + CM_PER_GPIO3_CLKCTRL) |=
-          CM_PER_GPIO3_CLKCTRL_OPTFCLKEN_GPIO_3_GDBCLK;
-
-}
-
-void GPIO2_ModuleClkConfig(void){
-
-    HWREG(SOC_CM_PER_REGS + CM_PER_GPIO2_CLKCTRL) |=
-          CM_PER_GPIO2_CLKCTRL_MODULEMODE_ENABLE;
-
-    HWREG(SOC_CM_PER_REGS + CM_PER_GPIO2_CLKCTRL) |=
-          CM_PER_GPIO2_CLKCTRL_OPTFCLKEN_GPIO_2_GDBCLK;
-
-}
 
 void GPIO1_ModuleClkConfig(void){
 
@@ -42,31 +23,12 @@ void GPIO1_ModuleClkConfig(void){
 }
 
 
-void GPIO0_ModuleClkConfig(void){
-
-    HWREG(SOC_CM_WKUP_REGS + CM_WKUP_GPIO0_CLKCTRL) |=
-          CM_WKUP_GPIO0_CLKCTRL_MODULEMODE_ENABLE;
-
-    HWREG(SOC_CM_WKUP_REGS + CM_WKUP_GPIO0_CLKCTRL) |=
-          CM_WKUP_GPIO0_CLKCTRL_OPTFCLKEN_GPIO0_GDBCLK;
-
-}
-
 void gpioModuleClk(int moduleClk){
 
 	switch(moduleClk){
-		case MODULE0:
-			GPIO0_ModuleClkConfig();
-			break;
-		case MODULE1:
+
 			GPIO1_ModuleClkConfig();
-			break;
-		case MODULE2:
-			GPIO2_ModuleClkConfig();
-			break;
-		case MODULE3:
-			GPIO3_ModuleClkConfig();
-			break;
-	}
+	
+  }
 
 }

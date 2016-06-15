@@ -20,7 +20,7 @@ DEVICE=am335x
 #
 # The application directory and name
 #
-APPNAME=gpioRobert
+APPNAME=gpio_Button_Iago
 SRC=src
 
 #
