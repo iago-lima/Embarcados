@@ -26,7 +26,6 @@
 #include "beaglebone.h"
 #include "hw_cm_per.h"
 #include "hw_types.h"
-#include "gpioClk.h"
 
 
 /* This is used to configure a GPIO pin as an input pin. */
@@ -41,13 +40,9 @@
 #define PIN_HIGH                 1
 
 
-#define GPIO_INSTANCE_PIN_NUMBER(n)     (n)
-
-#define GPIO_INSTANCE_ADDRESS(n)	( (n==0) ? SOC_GPIO_0_REGS : (n==1) ? SOC_GPIO_1_REGS : (n==2) ? SOC_GPIO_2_REGS: SOC_GPIO_3_REGS)
-
+#define GPIO_INSTANCE_ADDRESS           (SOC_GPIO_1_REGS)
+#define GPIO_INSTANCE_PIN_NUMBER(n)        (n)
 #define TOGGLE                          (0x01u)
-
-#define MSEG                           (0x3FFFFFF)
 
 enum moduleClk{MODULE1}moduleClk;
 

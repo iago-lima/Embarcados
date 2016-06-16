@@ -11,73 +11,60 @@
 #include "gpioLED.h"
 #include "gpioClk.h"	
 
-void ledInit(int nGpio, int GPIOModule, int direction){
-
-    gpioModuleClk(GPIOModule);
+void ledInit(int nPin, int direction){
+	int aux;
+    GPIO1_ModuleClkConfig();
 	
-	switch(nGpio){
+	switch(nPin){
+        
+        case GPIO1_0 ... GPIO1_7 :
+	        GPIOPinMuxSetup(CONTROL_CONF_GPMC_AD(nPin), CONTROL_CONF_MUXMODE(7));		
+			break;
+
         case GPIO1_8:
-            GPIOPinMuxSetup(CONTROL_CONF_UART_CTSN(0), CONTROL_CONF_MUXMODE(7));
-            break;
+        	GPIOPinMuxSetup(CONTROL_CONF_UART_CTSN(0), CONTROL_CONF_MUXMODE(7));
+        	break;
+
         case GPIO1_9:
-            GPIOPinMuxSetup(CONTROL_CONF_UART_RTSN(0), CONTROL_CONF_MUXMODE(7));        
-            break;
-        case GPIO1_10:
-            GPIOPinMuxSetup(CONTROL_CONF_UART_RXD(0), CONTROL_CONF_MUXMODE(7));
-            break;
+        	GPIOPinMuxSetup(CONTROL_CONF_UART_RTSN(0), CONTROL_CONF_MUXMODE(7));
+        	break;
+    		
+           case GPIO1_10:
+        	GPIOPinMuxSetup(CONTROL_CONF_UART_RXD(0), CONTROL_CONF_MUXMODE(7));
+        	break;
+    		
         case GPIO1_11:
-            GPIOPinMuxSetup(CONTROL_CONF_UART_TXD(0), CONTROL_CONF_MUXMODE(7));
-            break;
-        case GPIO1_29:
-            GPIOPinMuxSetup(CONTROL_CONF_GPMC_CSN(0), CONTROL_CONF_MUXMODE(7));
-            break;
-        case GPIO1_30:
-            GPIOPinMuxSetup(CONTROL_CONF_GPMC_CSN(1), CONTROL_CONF_MUXMODE(7));
-            break;
-        case GPIO1_31:
-            GPIOPinMuxSetup(CONTROL_CONF_GPMC_CSN(2), CONTROL_CONF_MUXMODE(7));
-            break;
-    }
-		
-		 
-    GPIOModuleEnable(GPIO_INSTANCE_ADDRESS(GPIOModule));
+        	GPIOPinMuxSetup(CONTROL_CONF_UART_TXD(0), CONTROL_CONF_MUXMODE(7));
+        	break;
 
-    GPIOModuleReset(GPIO_INSTANCE_ADDRESS(GPIOModule));
+        case GPIO1_12 ... GPIO1_15:
+		    GPIOPinMuxSetup(CONTROL_CONF_GPMC_AD(nPin), CONTROL_CONF_MUXMODE(7));	
+			break;
 
-    GPIODirModeSet(GPIO_INSTANCE_ADDRESS(GPIOModule), GPIO_INSTANCE_PIN_NUMBER(nGpio),
-					direction);    
-
-}
-
-
-void modulo1(int nGpio){
-	int num = 0;
-	switch(nGpio){
-		case GPIO1_0 ... GPIO1_7:
-        GPIOPinMuxSetup(CONTROL_CONF_GPMC_AD(nGpio), CONTROL_CONF_MUXMODE(7));		
-		break;
-
-		case GPIO1_12 ... GPIO1_15:
-	    GPIOPinMuxSetup(CONTROL_CONF_GPMC_A(7), CONTROL_CONF_MUXMODE(7));	
-		break;
-
-		case GPIO1_8 ... GPIO1_11:
-		selectUART(nGpio);
-		break;
-		
 		case GPIO1_16 ... GPIO1_27:
-		num = nGpio - 16;
-        GPIOPinMuxSetup(CONTROL_CONF_GPMC_A(num), CONTROL_CONF_MUXMODE(7));
-		break;
-
+			aux = nPin - 16;
+	        GPIOPinMuxSetup(CONTROL_CONF_GPMC_A(aux), CONTROL_CONF_MUXMODE(7));
+			break;
+		
 		case GPIO1_28:
-		GPIOPinMuxSetup(CONTROL_CONF_GPMC_BE1N, CONTROL_CONF_MUXMODE(7));
-		break;
+       		GPIOPinMuxSetup(CONTROL_CONF_GPMC_BE1N, CONTROL_CONF_MUXMODE(7));
+   			break;
 		
 		case GPIO1_29 ... GPIO1_31:
-		selectCSN(nGpio);
-		break;
-	}
+			aux = nPin-29;
+    		GPIOPinMuxSetup(CONTROL_CONF_GPMC_CSN(aux), CONTROL_CONF_MUXMODE(7));
+			break;
+}
+		
+	/* Enabling the GPIO module. */
+    GPIOModuleEnable(GPIO_INSTANCE_ADDRESS);
+
+    /* Resetting the GPIO module. */
+    GPIOModuleReset(GPIO_INSTANCE_ADDRESS);
+
+    /* Setting the GPIO pin as an output pin. */
+    GPIODirModeSet(GPIO_INSTANCE_ADDRESS, GPIO_INSTANCE_PIN_NUMBER(pin),
+				  direction);
 }
 
 void Delay(volatile unsigned int count){
@@ -86,10 +73,10 @@ void Delay(volatile unsigned int count){
 }
 
 
-int getValue(unsigned int nGpio, unsigned int nModule){
-	int* end_teste = (int*)(GPIO_INSTANCE_ADDRESS(nModule) + GPIO_DATAIN);
-	int teste = *end_teste;
+int getValue(unsigned int nGpio){
+	int *end_valor = (int*)(GPIO_INSTANCE_ADDRESS + GPIO_DATAIN);
+	int valorpin = *end_valor;
 	
-	if(teste & (1<<nGpio)) return PIN_HIGH;
+	if(valorpin & (1<<nGpio)) return PIN_HIGH;
 	else return PIN_LOW;
 }

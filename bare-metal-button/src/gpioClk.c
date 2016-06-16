@@ -21,14 +21,3 @@ void GPIO1_ModuleClkConfig(void){
           CM_PER_GPIO1_CLKCTRL_OPTFCLKEN_GPIO_1_GDBCLK;
 
 }
-
-
-void gpioModuleClk(int moduleClk){
-
-	switch(moduleClk){
-
-			GPIO1_ModuleClkConfig();
-	
-  }
-
-}

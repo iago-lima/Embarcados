@@ -35,10 +35,10 @@ int flagToggle=0x0;
 *END*-----------------------------------------------------------*/
 
 void GPIOPinMuxSetup(unsigned int offsetAddr, unsigned int padConfValue){
-		HWREG(SOC_CONTROL_REGS + offsetAddr) = (padConfValue);
-	    HWREG(SOC_CONTROL_REGS + offsetAddr) |= CONTROL_CONF_GPMC_AD12_CONF_GPMC_AD12_RXACTIVE;
-	    HWREG(SOC_CONTROL_REGS + offsetAddr) &= ~(CONTROL_CONF_GPMC_AD12_CONF_GPMC_AD12_PUTYPESEL);
-	    HWREG(SOC_CONTROL_REGS + offsetAddr) &= ~(CONTROL_CONF_GPMC_AD12_CONF_GPMC_AD12_PUDEN);
+    HWREG(SOC_CONTROL_REGS + offsetAddr) = (padConfValue);
+    HWREG(SOC_CONTROL_REGS + offsetAddr) |= CONTROL_CONF_GPMC_CSN0_CONF_GPMC_CSN0_RXACTIVE;
+    HWREG(SOC_CONTROL_REGS + offsetAddr) &= ~(CONTROL_CONF_GPMC_CSN0_CONF_GPMC_CSN0_PUTYPESEL);
+    HWREG(SOC_CONTROL_REGS + offsetAddr) &= ~(CONTROL_CONF_GPMC_CSN0_CONF_GPMC_CSN0_PUDEN);
 }
 
 /*FUNCTION*-------------------------------------------------------
@@ -50,7 +50,7 @@ void GPIOPinMuxSetup(unsigned int offsetAddr, unsigned int padConfValue){
 * \param  baseAdd    The memory address of the GPIO instance being used
 *END*-----------------------------------------------------------*/
 void GPIOModuleEnable(unsigned int baseAdd){
-    HWREG(baseAdd + GPIO_CTRL) &= ~(GPIO_CTRL_DISABLEMODULE);
+   HWREG(baseAdd + GPIO_CTRL) &= ~(GPIO_CTRL_DISABLEMODULE);
 }
 
 /*FUNCTION*-------------------------------------------------------
@@ -82,9 +82,8 @@ void GPIOModuleReset(unsigned int baseAdd){
 * - GPIO_DIR_INPUT - to configure the pin as an input pin\n
 * - GPIO_DIR_OUTPUT - to configure the pin as an output pin\n
 *END*-----------------------------------------------------------*/
-void GPIODirModeSet(unsigned int baseAdd,
-                            unsigned int pinNumber,
-                            unsigned int pinDirection) {
+void GPIODirModeSet(unsigned int baseAdd, unsigned int pinNumber,
+					unsigned int pinDirection){
     /* Checking if pin is required to be an output pin. */
     if(DIR_OUTPUT == pinDirection){
         HWREG(baseAdd + GPIO_OE) &= ~(1 << pinNumber);
@@ -111,9 +110,8 @@ void GPIODirModeSet(unsigned int baseAdd,
 * - GPIO_PIN_LOW - indicating to drive a logic LOW(logic 0) on the pin.
 * - GPIO_PIN_HIGH - indicating to drive a logic HIGH(logic 1) on the pin.
 *END*-----------------------------------------------------------*/
-void GPIOPinWrite(unsigned int baseAdd,
-                            unsigned int pinNumber,
-                            unsigned int pinValue) {
+void GPIOPinWrite(unsigned int baseAdd, unsigned int pinNumber,
+				  unsigned int pinValue){
 
     if(PIN_HIGH == pinValue){
         HWREG(baseAdd + GPIO_SETDATAOUT) = (1 << pinNumber);
@@ -127,20 +125,20 @@ void GPIOPinWrite(unsigned int baseAdd,
 * Function Name : ledToggle
 * Comments      :
 *END*-----------------------------------------------------------*/
-void ledToggle(int nGpio, int GPIOModule){
+/*void ledToggle(int nGpio, int GPIOModule){
     
     flagToggle^=TOGGLE;
 
     if(flagToggle){
-        /* Driving a logic HIGH on the GPIO pin. */
+        // Driving a logic HIGH on the GPIO pin.
         GPIOPinWrite(GPIO_INSTANCE_ADDRESS(GPIOModule),
                 GPIO_INSTANCE_PIN_NUMBER(nGpio),
                 PIN_HIGH);
     }else{
-         /* Driving a logic LOW on the GPIO pin. */
+         // Driving a logic LOW on the GPIO pin.
         GPIOPinWrite(GPIO_INSTANCE_ADDRESS(GPIOModule),
                 GPIO_INSTANCE_PIN_NUMBER(nGpio),
                 PIN_LOW);
     }
-}
+}*/
 
